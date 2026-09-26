@@ -1,26 +1,27 @@
 # Wazuh Home SOC Lab
 
-A self-built home lab for practicing detection engineering with Wazuh — simulating attacks against a Windows endpoint and building/tuning detections to catch them.
+A self-built home lab for practicing log investigation and detection engineering with Wazuh: simulating attacks against a Windows endpoint and building/tuning detections to catch them.
 
 ## Why I built this
 
-I'd been practicing offensive/defensive security concepts on TryHackMe, but wanted hands-on experience with a real SIEM stack: deploying it, feeding it telemetry, writing detection logic, and validating that detections actually fire against realistic attacker behavior — not just following a walkthrough.
+I'd been practicing offensive/defensive security concepts on TryHackMe and learning through other platforms, but wanted hands-on experience with a real SIEM.
 
 ## Architecture
 
 ```
 ┌─────────────────┐        ┌──────────────────┐        ┌─────────────────┐
-│   Kali Linux     │        │  Windows 10       │        │  Ubuntu Server   │
-│   (Attacker)     │──────▶│  (Victim)         │──────▶│  Wazuh (SIEM)    │
-│   2.5 GB RAM     │  attack│  Sysmon + Wazuh   │  logs  │  4 GB RAM        │
-│                  │        │  agent, 3 GB RAM  │        │                  │
+│   Kali Linux    │        │  Windows 10        │      │  Ubuntu Server  │
+│   (Attacker)    │──────▶ │  (Victim)         │─────▶│  Wazuh (SIEM)   │
+│   2.5 GB RAM    │ attack │  Sysmon + Wazuh    │ logs │  4 GB RAM       │
+│                 │        │  agent, 3 GB RAM   │      │                 │
 └─────────────────┘        └──────────────────┘        └─────────────────┘
 ```
 
-- **Host:** Windows 11, 16 GB RAM, VMs run in [VirtualBox/VMware — *fill in*]
+- **Host:** Windows 11, 16 GB RAM, VMs run in OracleVirtualBox
 - **Wazuh server (Ubuntu):** collects and analyzes logs, runs the rule engine and dashboard
-- **Windows 10 victim:** Sysmon installed and configured (using [SwiftOnSecurity / Olaf Hartong config — *fill in which*]), Wazuh agent forwarding events
-- **Kali attacker:** source of simulated attacks (manual techniques and/or Atomic Red Team)
+- **Windows 10 victim:** Sysmon installed and configured (using SwiftOnSecurity), Wazuh agent forwarding events
+- **Kali attacker:** source of simulated attacks
+- **Atomic Red Team:** Automated attacks mapped to MITRE framework
 
 Full config files (sanitized) are in [`/configs`](./configs).
 
