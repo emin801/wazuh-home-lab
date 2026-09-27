@@ -1,0 +1,9 @@
+Configured each vm's network settings to host-only for 2 reasons:
+ 1. Connection among VM's without a problem
+ 2. Accessible Wazuh dashboard from my own host (Windows 11 pro).
+
+
+Ubuntu (Wazuh manager) IP: 192.168.56.100
+Windows 10 (Victim) IP: 192.168.56.101
+Kali linux (Attacker) IP: 192.168.56.102
+
